@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
+import android.view.Gravity;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -56,6 +57,17 @@ public class WildButton extends AppCompatButton {
         break;
       case "gravity":
         // TODO - Manage gravity
+        switch (value){
+          case "right":
+            this.setGravity(Gravity.RIGHT);
+            break;
+          case "center_horizontal":
+            this.setGravity(Gravity.CENTER_HORIZONTAL);
+            break;
+          case "left":
+            this.setGravity(Gravity.LEFT);
+            break;
+        }
         break;
       case "id":
         /* Nothing to do */

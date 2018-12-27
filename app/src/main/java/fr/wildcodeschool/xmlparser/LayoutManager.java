@@ -54,7 +54,7 @@ public class LayoutManager {
             break;
           case "layout_marginHorizontal":
           case "layout_marginVertical":
-            Pattern pattern = Pattern.compile("([1-9]*)([a-z]*)");
+            Pattern pattern = Pattern.compile("([0-9]*)([a-z]*)");
             Matcher matcher = pattern.matcher(value);
             if (matcher.find())
             {
@@ -75,6 +75,17 @@ public class LayoutManager {
             break;
           case "layout_gravity":
             // TODO - Add gravity
+            switch (value){
+              case "right":
+                gravity = Gravity.RIGHT;
+                break;
+              case "center_horizontal":
+                gravity = Gravity.CENTER_HORIZONTAL;
+                break;
+              case "left":
+                gravity = Gravity.LEFT;
+                break;
+              }
             break;
           default:
             nodeAttr.put(key, value);
@@ -103,7 +114,7 @@ public class LayoutManager {
 
     int pixel = 0;
     try {
-      int num = Integer.getInteger(value);
+      int num = Integer.valueOf(value);
       switch (unit) {
         case "px":
           pixel = num;

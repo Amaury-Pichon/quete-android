@@ -55,7 +55,7 @@ public class WildEditText extends AppCompatEditText {
         break;
       case "ems":
         try {
-          this.setEms(Integer.getInteger(value));
+          this.setEms(Integer.valueOf(value));
         } catch (NullPointerException e) {
           Log.e(TAG, e.getMessage());
         }

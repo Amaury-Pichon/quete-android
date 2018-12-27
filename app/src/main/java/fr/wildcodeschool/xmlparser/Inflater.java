@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import fr.wildcodeschool.xmlparser.wildView.WildButton;
+import fr.wildcodeschool.xmlparser.wildView.WildCheckBox;
 import fr.wildcodeschool.xmlparser.wildView.WildEditText;
 import fr.wildcodeschool.xmlparser.wildView.WildLinearLayout;
+import fr.wildcodeschool.xmlparser.wildView.WildSpace;
+import fr.wildcodeschool.xmlparser.wildView.WildTextView;
 
 public class Inflater {
   // Activity context
@@ -29,7 +32,7 @@ public class Inflater {
    * @throws IOException
    * @throws XmlPullParserException
    */
-  public void inflate(ViewGroup pParent) throw IOException, XmlPullParserException {
+  public void inflate(ViewGroup pParent) throws IOException, XmlPullParserException {
     // Store the parent
     ViewGroup lParentView = pParent;
 
@@ -64,12 +67,21 @@ public class Inflater {
             break;
           case "TextView":
             // TODO - Add WildTextView
+            WildTextView lTextView = new WildTextView(ctx);
+            lTextView.parseXmlNode(parser);
+            lParentView.addView(lTextView);
             break;
           case "CheckBox":
             // TODO - Add WildCheckBox
+            WildCheckBox lCheckBox = new WildCheckBox(ctx);
+            lCheckBox.parseXmlNode(parser);
+            lParentView.addView(lCheckBox);
             break;
           case "Space":
             // TODO - Add WildSpace
+            WildSpace lSpace = new WildSpace(ctx);
+            lSpace.parseXmlNode(parser);
+            lParentView.addView(lSpace);
             break;
           default:
             break;
