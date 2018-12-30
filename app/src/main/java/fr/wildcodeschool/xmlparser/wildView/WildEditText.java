@@ -49,43 +49,27 @@ public class WildEditText extends AppCompatEditText {
    * @param value The value of xml attribute
    */
   private void setAttribute(String key, String value) {
+
+    ViewBuilder editTextBuilder = new ViewBuilder(this);
+
     switch (key) {
       case "inputType":
-        this.setInputType(value);
+        editTextBuilder.setInputType(value);
         break;
       case "ems":
-        try {
-          this.setEms(Integer.valueOf(value));
-        } catch (NullPointerException e) {
-          Log.e(TAG, e.getMessage());
-        }
+        editTextBuilder.setEms(value);
         break;
       case "text":
-        this.setText(value);
+        editTextBuilder.setText(value);
         break;
       case "hint":
-        this.setHint(value);
+        editTextBuilder.setHint(value);
         break;
       case "id":
         /* Nothing to do */
         break;
       default:
         Log.i(TAG, "Unknown Attribute ["+key+"]");
-        break;
-    }
-  }
-
-  /**
-   *
-   * @param pInputType
-   */
-  private void setInputType(String pInputType) {
-    switch (pInputType) {
-      case "textPersonName":
-        this.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-        break;
-      default:
-        // Log it
         break;
     }
   }

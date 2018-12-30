@@ -51,40 +51,23 @@ public class WildTextView extends AppCompatTextView {
      */
     private void setAttribute(String key, String value) {
 
+        ViewBuilder textViewBuilder = new ViewBuilder(this);
+
         int paddingV = 0;
         int paddingH = 0;
 
         switch (key) {
             case "text":
-                this.setText(value);
+                textViewBuilder.setText(value);
                 break;
             case "background":
-                this.setBackgroundColor(Color.parseColor(value));
+                textViewBuilder.setBackgroundColor(value);
                 break;
             case "textColor":
-                this.setTextColor(Color.parseColor(value));
+                textViewBuilder.setTextColor(value);
                 break;
             case "textSize":
-                Pattern patternSize = Pattern.compile("([0-9]*)([a-z]*)");
-                Matcher matcherSize = patternSize.matcher(value);
-                if (matcherSize.find())
-                {
-                    String valueSize = matcherSize.group(1);
-                    String unitSize = matcherSize.group(2);
-                    switch (unitSize) {
-                        case "px":
-                            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, Integer.valueOf(valueSize));
-                            break;
-                        case "dp":
-                            this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, Integer.valueOf(valueSize));
-                            break;
-                        case "sp":
-                            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, Integer.valueOf(valueSize));
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                textViewBuilder.setTextSize(value);
                 break;
             case "paddingHorizontal":
             case "paddingVertical":

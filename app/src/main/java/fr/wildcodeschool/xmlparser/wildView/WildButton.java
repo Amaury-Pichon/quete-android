@@ -22,6 +22,7 @@ public class WildButton extends AppCompatButton {
    */
   public WildButton(Context pCtx) {
     super(pCtx);
+
   }
 
   /**
@@ -51,23 +52,16 @@ public class WildButton extends AppCompatButton {
    * @param value The value of xml attribute
    */
   private void setAttribute(String key, String value) {
+
+    ViewBuilder buttonBuilder = new ViewBuilder(this);
+
     switch (key) {
       case "text":
-        this.setText(value);
+        buttonBuilder.setText(value);
         break;
       case "gravity":
         // TODO - Manage gravity
-        switch (value){
-          case "right":
-            this.setGravity(Gravity.RIGHT);
-            break;
-          case "center_horizontal":
-            this.setGravity(Gravity.CENTER_HORIZONTAL);
-            break;
-          case "left":
-            this.setGravity(Gravity.LEFT);
-            break;
-        }
+        buttonBuilder.setGravity(value);
         break;
       case "id":
         /* Nothing to do */

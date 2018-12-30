@@ -46,9 +46,11 @@ public class WildCheckBox extends AppCompatCheckBox {
      */
     private void setAttribute(String key, String value) {
 
+        ViewBuilder checkBoxBuilder = new ViewBuilder(this);
+
         switch (key) {
             case "text":
-                this.setText(value);
+                checkBoxBuilder.setText(value);
                 break;
             case "id":
                 /* Nothing to do */
